@@ -1,0 +1,1 @@
+{"name":"men-dokoro-akari","version":"1.0.0","private":true,"type":"module","scripts":{"dev":"wrangler dev","deploy":"wrangler deploy","db:local":"wrangler d1 migrations apply ramen-shop-db --local","db:remote":"wrangler d1 migrations apply ramen-shop-db --remote","check":"wrangler deploy --dry-run"},"devDependencies":{"wrangler":"^4.40.0"}}

@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "men-dokoro-akari",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-09-01",
+  "assets": { "directory": "./public", "binding": "ASSETS", "run_worker_first": ["/api/*", "/media/*"] },
+  "d1_databases": [{ "binding": "DB", "database_name": "ramen-shop-db", "database_id": "D1_DATABASE_ID" }],
+  "r2_buckets": [{ "binding": "IMAGES", "bucket_name": "ramen-shop-images" }],
+  "vars": { "SESSION_DAYS": "14" }
+}

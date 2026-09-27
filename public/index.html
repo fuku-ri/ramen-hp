@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="毎日店内で炊き上げる、まっすぐな一杯。麺処 朱の公式サイトです。">
+  <meta property="og:title" content="麺処 朱｜毎日食べたい、まっすぐな一杯。">
+  <meta property="og:description" content="営業時間、混雑状況、最新メニューをご案内します。">
+  <meta property="og:image" content="/assets/ramen-hero.png">
+  <title>麺処 朱｜毎日食べたい、まっすぐな一杯。</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;900&family=Noto+Serif+JP:wght@600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="麺処 朱 ホーム"><span class="brand-mark">朱</span><span>麺処 <b>朱</b><small>AKARI</small></span></a>
+    <nav aria-label="メインナビゲーション">
+      <a href="#menu">お品書き</a><a href="#story">私たちの一杯</a><a href="#shop">店舗案内</a>
+    </nav>
+    <a class="header-status" href="#shop"><span></span><b id="headerStatus">ただいま空席あり</b></a>
+    <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <img src="assets/ramen-hero.png" alt="湯気の立つ特製醤油らぁ麺" fetchpriority="high">
+      <div class="hero-shade"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">一杯に、今日のごちそうを。</p>
+        <h1>毎日食べたい、<br><em>まっすぐな一杯。</em></h1>
+        <p class="hero-lead">国産鶏と香味野菜をじっくり炊いた澄んだスープ。<br>余計なものを足さず、素材の声を一杯に。</p>
+        <a class="button primary" href="#menu">お品書きを見る <span>↓</span></a>
+      </div>
+      <div class="today-card">
+        <div class="today-label"><span class="pulse"></span>ただいまの店内</div>
+        <strong id="heroStatus">空席あり</strong>
+        <p id="heroStatusNote">すぐにご案内できます</p>
+        <small id="statusUpdated">本日更新</small>
+      </div>
+    </section>
+
+    <section class="intro" id="story">
+      <p class="vertical-copy">毎日、店内仕込み。</p>
+      <div>
+        <span class="section-kicker">OUR PHILOSOPHY</span>
+        <h2>派手さより、<br>また食べたくなる味を。</h2>
+      </div>
+      <div class="intro-text">
+        <p>朝から丁寧に引く出汁、香りを重ねた自家製のかえし、喉ごしの良い麺。ひとつひとつの仕事を積み重ねて、最後の一口まで心地よい一杯をお作りします。</p>
+        <dl><div><dt>スープ</dt><dd>国産鶏を中心に、毎朝店内で炊き上げます。</dd></div><div><dt>麺</dt><dd>スープに合わせた、しなやかな特注麺。</dd></div><div><dt>具材</dt><dd>低温でゆっくり仕上げる、やわらかな焼豚。</dd></div></dl>
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+      <div class="section-head">
+        <div><span class="section-kicker light">MENU</span><h2>お品書き</h2></div>
+        <p>すべて税込価格です。<br>麺の硬さや苦手な食材は、お気軽にお申し付けください。</p>
+      </div>
+      <div class="filters" role="group" aria-label="メニュー絞り込み">
+        <button class="active" data-filter="all">すべて</button><button data-filter="ramen">らぁ麺</button><button data-filter="side">ご飯・一品</button><button data-filter="drink">お飲み物</button>
+      </div>
+      <div class="menu-grid" id="menuGrid"></div>
+    </section>
+
+    <section class="shop-section" id="shop">
+      <div class="shop-card">
+        <span class="section-kicker">SHOP INFORMATION</span><h2 id="shopName">店舗のご案内</h2>
+        <div class="shop-details">
+          <dl><div><dt>住所</dt><dd id="shopAddress">〒000-0000<br>東京都〇〇区〇〇 1-2-3</dd></div><div><dt>営業時間</dt><dd><span id="shopHours">11:00–15:00 / 17:30–21:00</span><br><small>スープがなくなり次第終了</small></dd></div><div><dt>定休日</dt><dd id="shopHoliday">毎週 水曜日</dd></div><div><dt>お席</dt><dd id="shopSeats">カウンター 10席</dd></div></dl>
+          <a class="button dark" id="mapLink" href="https://maps.google.com" target="_blank" rel="noreferrer">Google マップで見る ↗</a>
+        </div>
+      </div>
+      <div class="map-placeholder"><div class="map-lines"></div><span class="map-pin">朱</span><p>〇〇駅 東口より徒歩5分</p></div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#top"><span class="brand-mark">朱</span><span>麺処 <b>朱</b><small>AKARI</small></span></a><p>今日も、あたたかい一杯を用意してお待ちしています。</p><div><a href="#menu">お品書き</a><a href="#shop">店舗案内</a><a href="admin.html">スタッフ入口</a></div><small>© 2026 麺処 朱</small></footer>
+  <script src="app.js"></script>
+</body>
+</html>
