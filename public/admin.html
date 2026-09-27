@@ -2,15 +2,15 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex,nofollow"><title>スタッフ管理｜麺処 朱</title>
+  <meta name="robots" content="noindex,nofollow"><title>スタッフ管理｜店名サンプル</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css">
 </head>
 <body class="admin-body">
   <section class="login-screen" id="loginScreen">
-    <form class="login-box" id="loginForm"><div class="brand-mark large">朱</div><p>麺処 朱</p><h1 id="loginTitle">スタッフログイン</h1><label>パスワード<input id="passwordInput" type="password" inputmode="numeric" autocomplete="current-password" required placeholder="パスワード"></label><button class="button primary full" id="loginButton">管理画面を開く</button><p class="login-hint" id="loginHint">パスワードを入力してください。</p><p class="error" id="loginError"></p><a href="index.html">← お店のページに戻る</a></form>
+    <form class="login-box" id="loginForm"><div class="brand-mark large">店</div><p>店名サンプル</p><h1 id="loginTitle">スタッフログイン</h1><label>パスワード<input id="passwordInput" type="password" inputmode="numeric" autocomplete="current-password" required placeholder="パスワード"></label><button class="button primary full" id="loginButton">管理画面を開く</button><p class="login-hint" id="loginHint">パスワードを入力してください。</p><p class="error" id="loginError"></p><a href="index.html">← お店のページに戻る</a></form>
   </section>
   <div class="admin-app" id="adminApp" hidden>
-    <header class="admin-header"><div><span class="brand-mark small">朱</span><b>麺処 朱</b><span>スタッフ管理</span></div><div><a href="index.html" target="_blank">公開ページを見る ↗</a><button id="logoutButton">ログアウト</button></div></header>
+    <header class="admin-header"><div><span class="brand-mark small">店</span><b>店名サンプル</b><span>スタッフ管理</span></div><div><a href="index.html" target="_blank">公開ページを見る ↗</a><button id="logoutButton">ログアウト</button></div></header>
     <main class="admin-main">
       <div class="admin-welcome"><div><span class="admin-date" id="adminDate"></span><h1>お店の状況を更新しましょう</h1><p>変更はこの端末の公開ページにすぐ反映されます。</p></div><span class="save-state" id="saveState">✓ 保存済み</span></div>
       <section class="admin-panel occupancy-panel"><div class="panel-title"><span class="step">1</span><div><h2>現在の空き状況</h2><p>公開ページに大きく表示されます</p></div></div><div class="status-buttons"><button data-status="available"><span>○</span><b>空席あり</b><small>すぐにご案内できます</small></button><button data-status="busy"><span>△</span><b>少し待ち</b><small>5〜15分ほど</small></button><button data-status="full"><span>×</span><b>満席です</b><small>お時間をいただきます</small></button><button data-status="closed"><span>—</span><b>営業時間外</b><small>準備中・閉店</small></button></div><div class="status-preview"><span>お客様には</span><strong id="statusPreview">「空席あり」と表示中</strong><small id="statusTime"></small></div></section>
@@ -19,7 +19,7 @@
     </main>
   </div>
 
-  <dialog id="menuDialog"><form method="dialog" id="menuForm"><div class="dialog-head"><div><small id="dialogLabel">メニューを追加</small><h2 id="dialogTitle">新しいメニュー</h2></div><button value="cancel" class="icon-button" aria-label="閉じる">×</button></div><input type="hidden" id="menuId"><label>料理の写真<div class="photo-upload" id="photoUpload"><img id="photoPreview" alt="写真プレビュー"><div><b>写真を選ぶ</b><small>JPG・PNG（自動で縮小します）</small></div><input id="menuPhoto" type="file" accept="image/*"></div></label><div class="form-grid"><label>メニュー名<input id="menuName" required placeholder="例：特製醤油らぁ麺"></label><label>価格（税込）<div class="price-input"><span>¥</span><input id="menuPrice" required type="number" min="0" step="10" placeholder="1200"></div></label></div><label>説明<textarea id="menuDescription" rows="3" placeholder="味や具材の特徴を入力"></textarea></label><label>カテゴリー<select id="menuCategory"><option value="ramen">らぁ麺</option><option value="side">ご飯・一品</option><option value="drink">お飲み物</option></select></label><div class="dialog-actions"><button value="cancel" class="button secondary">キャンセル</button><button value="default" class="button primary" id="saveMenuButton">この内容で保存</button></div></form></dialog>
+  <dialog id="menuDialog"><form method="dialog" id="menuForm"><div class="dialog-head"><div><small id="dialogLabel">メニューを追加</small><h2 id="dialogTitle">新しいメニュー</h2></div><button value="cancel" class="icon-button" aria-label="閉じる">×</button></div><input type="hidden" id="menuId"><label>料理の写真<div class="photo-upload" id="photoUpload"><img id="photoPreview" alt="写真プレビュー"><div><b>写真を選ぶ</b><small>JPG・PNG（自動で縮小します）</small></div><input id="menuPhoto" type="file" accept="image/*"></div></label><div class="form-grid"><label>メニュー名<input id="menuName" required placeholder="例：特製醤油らぁ麺"></label><label>価格（税込）<div class="price-input"><span>¥</span><input id="menuPrice" required type="number" min="0" step="10" placeholder="1200"></div></label></div><label>説明<textarea id="menuDescription" rows="3" placeholder="味や具材の特徴を入力"></textarea></label><label>カテゴリー<select id="menuCategory"><option value="ramen">麺</option><option value="side">サイドメニュー</option><option value="drink">ドリンク</option></select></label><div class="dialog-actions"><button value="cancel" class="button secondary">キャンセル</button><button value="default" class="button primary" id="saveMenuButton">この内容で保存</button></div></form></dialog>
   <div class="toast" id="toast">保存しました</div>
   <script src="admin.js"></script>
 </body>
