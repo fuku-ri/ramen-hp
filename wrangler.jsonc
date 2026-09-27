@@ -18,10 +18,10 @@
 			"database_id": "36d4ea82-583a-480e-a5b9-8aa71dc1a7c7"
 		}
 	],
-	"r2_buckets": [
+	"kv_namespaces": [
 		{
 			"binding": "IMAGES",
-			"bucket_name": "ramen-shop-images"
+			"id": "927a58eec5564eea837cac68fe3ad9cd"
 		}
 	],
 	"vars": {

@@ -1,6 +1,6 @@
 # 麺処 朱 — Cloudflare Workers 店舗サイト
 
-実店舗向けの公開サイトとスタッフ管理画面です。管理画面の変更はD1へ保存され、すべてのお客様へ反映されます。メニュー写真はR2へ保存します。
+実店舗向けの公開サイトとスタッフ管理画面です。管理画面の変更はD1へ保存され、すべてのお客様へ反映されます。メニュー写真はWorkers KVへ保存します。
 
 ## 主な機能
 
@@ -16,7 +16,7 @@
 
 - Workers：WebサイトとAPI
 - D1：店舗情報、メニュー、管理者、セッション
-- R2：アップロード画像
+- Workers KV：アップロード画像
 
 ## 初回デプロイ手順
 
@@ -35,11 +35,13 @@ npx wrangler d1 create ramen-shop-db
 
 表示された `database_id` を `wrangler.jsonc` の `D1_DATABASE_ID` と置き換えます。
 
-### 3. R2バケットを作成
+### 3. KV（画像保存用）を作成
 
 ```bash
-npx wrangler r2 bucket create ramen-shop-images
+npx wrangler kv namespace create ramen-shop-images
 ```
+
+表示された `id` を `wrangler.jsonc` の `KV_NAMESPACE_ID` と置き換えます。
 
 ### 4. データベースを初期化
 
@@ -67,7 +69,7 @@ npm run deploy
 
 ## GitHub連携で自動デプロイする場合
 
-Cloudflare Workers BuildsでGitHubリポジトリを接続し、デプロイコマンドを `npx wrangler deploy` にします。D1、R2、Secretは先に上記手順で作成してください。
+Cloudflare Workers BuildsでGitHubリポジトリを接続し、デプロイコマンドを `npx wrangler deploy` にします。D1、KV、Secretは先に上記手順で作成してください。
 
 ## ローカル確認
 
@@ -83,7 +85,7 @@ npm run dev
 - `public/index.html`：公開ページ
 - `public/admin.html`：管理画面
 - `public/styles.css`：デザイン
-- `src/worker.js`：API、認証、D1・R2処理
+- `src/worker.js`：API、認証、D1・KV処理
 - `migrations/0001_initial.sql`：データベース構造と初期メニュー
 - `wrangler.jsonc`：Cloudflare設定
 
