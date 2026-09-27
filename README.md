@@ -8,7 +8,7 @@
 - 空席あり／少し待ち／満席／営業時間外の即時切替
 - メニューの追加、編集、削除、写真アップロード
 - 店名、住所、営業時間、定休日、席数、GoogleマップURLの編集
-- 初回管理者登録、パスワードのみのログイン、HttpOnlyセッション
+- Cloudflareに登録したパスワードでのログイン、HttpOnlyセッション
 - ログイン連続失敗時の15分ロック
 - スマートフォン対応
 
@@ -49,15 +49,9 @@ npx wrangler kv namespace create ramen-shop-images
 npm run db:remote
 ```
 
-### 5. 初回登録用の秘密文字列を登録
+### 5. 管理画面のパスワードを登録
 
-推測できない長いランダム文字列を用意し、次を実行します。
-
-```bash
-npx wrangler secret put SETUP_TOKEN
-```
-
-入力欄へ秘密文字列を貼り付けます。この値はGitHubへ保存しないでください。
+Cloudflareダッシュボードの Worker → Settings → Variables and Secrets で、Type を Secret、名前を `ADMIN_PASSWORD` として登録します（または `npx wrangler secret put ADMIN_PASSWORD`）。推測されにくい12文字以上にしてください。この値はGitHubへ保存しないでください。パスワードを変えたいときも、ここの値を書き換えるだけです。
 
 ### 6. デプロイ
 
@@ -65,7 +59,7 @@ npx wrangler secret put SETUP_TOKEN
 npm run deploy
 ```
 
-表示されたURLの `/admin.html` を開き、セットアップトークンと12文字以上のパスワードを入力します。以降は `/admin.html` でパスワードを入力するだけでログインできます。
+表示されたURLの `/admin.html` を開き、`ADMIN_PASSWORD` に登録したパスワードを入力するとログインできます。
 
 ## GitHub連携で自動デプロイする場合
 
@@ -73,7 +67,7 @@ Cloudflare Workers BuildsでGitHubリポジトリを接続し、デプロイコ�
 
 ## ローカル確認
 
-`.dev.vars.example` を `.dev.vars` としてコピーし、ローカル専用の `SETUP_TOKEN` を設定します。
+`.dev.vars.example` を `.dev.vars` としてコピーし、ローカル専用の `ADMIN_PASSWORD` を設定します。
 
 ```bash
 npm run db:local
@@ -91,6 +85,6 @@ npm run dev
 
 ## セキュリティ上の注意
 
-- `.dev.vars` やセットアップトークンをGitHubへpushしないでください。
+- `.dev.vars` や管理画面のパスワードをGitHubへpushしないでください。
 - 管理者パスワードには店舗名や電話番号など推測しやすい文字列を使用しないでください。
 - 管理画面URLは公開されても、サーバー側認証なしではデータを変更できません。

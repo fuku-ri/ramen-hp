@@ -23,8 +23,5 @@
 			"binding": "IMAGES",
 			"id": "927a58eec5564eea837cac68fe3ad9cd"
 		}
-	],
-	"vars": {
-		"SESSION_DAYS": "14"
-	}
+	]
 }
