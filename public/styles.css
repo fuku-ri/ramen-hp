@@ -33,3 +33,4 @@ footer>small{color:var(--muted)}
 .shop-card{padding:72px max(7vw,45px)}
 .shop-card h2{font-size:36px;margin:10px 0}
 @media(max-width:800px){.hero{padding:36px 20px}.menu-section{padding:56px 20px}.section-head h2,.shop-card h2{font-size:30px}.shop-card{padding:56px 25px}}
+@media(min-width:801px){.site-header nav{margin-left:auto;margin-right:32px}}
