@@ -45,3 +45,11 @@ body,.site-header,.hero,.menu-section,.shop-section,footer{background:#fff}
 .site-header,footer{background:#f5f5f5}
 @media(max-width:800px){.site-header nav{background:#f5f5f5}}
 .status-buttons{grid-template-columns:repeat(2,1fr)}
+/* トッピング：写真なしのコンパクト表示 */
+.topping-card{align-self:start}
+.topping-card:hover{transform:none}
+.topping-card .menu-copy{padding:16px 20px}
+.topping-card .menu-copy h3{font-size:16px}
+.topping-card .menu-copy p{margin-top:6px}
+.topping-card em{font-style:normal;font-size:12px;color:var(--muted);margin-right:8px}
+.topping-card.is-soldout h3,.topping-card.is-soldout strong{color:var(--muted)}
