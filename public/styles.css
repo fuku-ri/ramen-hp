@@ -34,3 +34,11 @@ footer>small{color:var(--muted)}
 .shop-card h2{font-size:36px;margin:10px 0}
 @media(max-width:800px){.hero{padding:36px 20px}.menu-section{padding:56px 20px}.section-head h2,.shop-card h2{font-size:30px}.shop-card{padding:56px 25px}}
 @media(min-width:801px){.site-header nav{margin-left:auto;margin-right:32px}}
+/* 白基調＋グレーの境界線 */
+body,.site-header,.hero,.menu-section,.shop-section,footer{background:#fff}
+.site-header,.hero{border-bottom:1px solid #d9d9d9}
+.shop-section,footer{border-top:1px solid #d9d9d9}
+.today-card{background:#fff;border:1px solid #d9d9d9;border-top:4px solid var(--red)}
+.menu-card{background:#fff;border:1px solid #d9d9d9;box-shadow:none}
+.filters{border-bottom-color:#d9d9d9}
+@media(max-width:800px){.site-header nav{background:#fff;border-bottom:1px solid #d9d9d9}}
