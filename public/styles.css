@@ -11,3 +11,16 @@ body[data-status="busy"] .pulse,body[data-status="busy"] .header-status span{bac
 .hero-lead{color:var(--ink);font-size:17px;margin-bottom:28px}
 .today-card{position:static;width:300px;box-shadow:none;border:1px solid rgba(0,0,0,.08);border-top:4px solid var(--red)}
 @media(max-width:800px){.hero{padding:40px 20px}.today-card{width:100%}}
+.menu-section{background:#e8e1d5;color:var(--ink);border-top:1px solid rgba(0,0,0,.06)}
+.section-kicker.light{color:var(--red)}
+.section-head>p{color:var(--muted)}
+.filters{border-bottom-color:rgba(0,0,0,.12)}
+.filters button{color:var(--muted)}
+.filters button.active{color:var(--ink)}
+.menu-card{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.menu-copy strong{color:var(--red)}
+.menu-copy p{color:var(--muted)}
+.sold-out{color:#fff}
+.empty-menu{color:var(--muted)}
+footer{background:var(--paper);color:var(--ink);border-top:1px solid rgba(0,0,0,.08)}
+footer>small{color:var(--muted)}
