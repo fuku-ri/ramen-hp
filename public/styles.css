@@ -6,7 +6,7 @@ body[data-status="busy"] .pulse,body[data-status="busy"] .header-status span{bac
 .status-buttons{grid-template-columns:repeat(4,1fr)}.store-form label{display:block;font-size:12px;font-weight:700;margin:12px 0}.store-form input,.store-form textarea{width:100%;padding:12px;border:1px solid #ccc;margin-top:6px}.store-form textarea{resize:vertical}@media(max-width:800px){.status-buttons{grid-template-columns:1fr}}
 
 [hidden]{display:none!important}
-.hero{height:auto;min-height:0;color:var(--ink);background:#fff;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px;padding:72px 8vw}
+.hero{height:auto;min-height:0;color:var(--ink);background:#e8e1d5;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px;padding:72px 8vw}
 .hero-copy{position:static;transform:none;max-width:640px}
 .hero-lead{color:var(--ink);font-size:17px;margin-bottom:28px}
 .today-card{position:static;width:300px;box-shadow:none;border:1px solid rgba(0,0,0,.08);border-top:4px solid var(--red)}
