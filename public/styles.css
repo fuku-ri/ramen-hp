@@ -24,3 +24,12 @@ body[data-status="busy"] .pulse,body[data-status="busy"] .header-status span{bac
 .empty-menu{color:var(--muted)}
 footer{background:var(--paper);color:var(--ink);border-top:1px solid rgba(0,0,0,.08)}
 footer>small{color:var(--muted)}
+.hero{padding:56px 8vw;border-bottom:1px solid rgba(0,0,0,.08)}
+.today-card{background:#fff}
+.menu-section{background:var(--paper);border-top:0;padding:72px max(5vw,30px) 88px}
+.section-head h2{font-size:36px;margin:10px 0 0}
+.filters{margin:24px auto 28px}
+.shop-section{background:#e8e1d5;border-top:1px solid rgba(0,0,0,.08)}
+.shop-card{padding:72px max(7vw,45px)}
+.shop-card h2{font-size:36px;margin:10px 0}
+@media(max-width:800px){.hero{padding:36px 20px}.menu-section{padding:56px 20px}.section-head h2,.shop-card h2{font-size:30px}.shop-card{padding:56px 25px}}
