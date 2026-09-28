@@ -18,6 +18,10 @@
 			"database_id": "36d4ea82-583a-480e-a5b9-8aa71dc1a7c7"
 		}
 	],
+	// 02:00 UTC = 11:00 JST に営業中（金曜は除く）、06:00 UTC = 15:00 JST に営業時間外へ自動切替
+	"triggers": {
+		"crons": ["0 2 * * *", "0 6 * * *"]
+	},
 	"kv_namespaces": [
 		{
 			"binding": "IMAGES",
