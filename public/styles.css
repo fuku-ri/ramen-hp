@@ -53,3 +53,6 @@ body,.site-header,.hero,.menu-section,.shop-section,footer{background:#fff}
 .topping-card .menu-copy p{margin-top:6px}
 .topping-card em{font-style:normal;font-size:12px;color:var(--muted);margin-right:8px}
 .topping-card.is-soldout h3,.topping-card.is-soldout strong{color:var(--muted)}
+/* 「すべて」表示のカテゴリー見出し */
+.menu-group-title{grid-column:1/-1;margin:24px 0 0;padding-top:24px;border-top:1px solid #d9d9d9;font:700 20px 'Noto Serif JP'}
+.menu-group-title:first-child{margin-top:0;padding-top:0;border-top:0}
