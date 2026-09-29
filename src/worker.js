@@ -1,7 +1,29 @@
 const H={'content-type':'application/json; charset=utf-8','cache-control':'no-store'}, COOKIE='akari_session', enc=new TextEncoder();
-export default{async fetch(req,env){const u=new URL(req.url);try{if(u.pathname.startsWith('/api/'))return await api(req,env,u);if(u.pathname.startsWith('/media/'))return await media(req,env,u);return env.ASSETS.fetch(req)}catch(e){console.error(e);return json({error:'サーバーで問題が発生しました。'},500)}},
+export default{async fetch(req,env){const u=new URL(req.url);try{if(u.pathname.startsWith('/api/'))return await api(req,env,u);if(u.pathname.startsWith('/media/'))return await media(req,env,u);if(u.pathname==='/'&&['GET','HEAD'].includes(req.method))return await home(req,env);return env.ASSETS.fetch(req)}catch(e){console.error(e);return json({error:'サーバーで問題が発生しました。'},500)}},
 // 11:00(JST)に「営業中」、15:00(JST)に「営業時間外」へ自動切替。金曜(定休日)は11:00の切替をしない（wrangler.jsonc の triggers.crons で実行）
 async scheduled(event,env){const open=event.cron==='0 2 * * *';if(open&&new Date(event.scheduledTime+9*3600000).getUTCDay()===5)return;const [status,note]=open?['available','ただいま営業中です']:['closed','現在は営業時間外です'];await env.DB.prepare("UPDATE stores SET status=?,status_note=?,status_updated_at=CURRENT_TIMESTAMP,updated_at=CURRENT_TIMESTAMP WHERE id=1 AND status<>?").bind(status,note,status).run()}};
+
+// トップページ：index.html にデータベースの最新情報を埋め込んで返す（ソース表示・検索エンジンにも最新情報が見える）
+// メニューカードのHTMLは public/app.js の card() と同じ形にそろえること
+const COPIES={available:['営業中','ただいま営業中です'],closed:['営業時間外','現在は営業時間外です']},GROUPS=[['ramen','単品・セット'],['side','トッピング'],['drink','ドリンク']];
+async function home(req,env){const page=await env.ASSETS.fetch(new URL('/',req.url));if(!page.ok||!(page.headers.get('content-type')||'').includes('text/html'))return page;let store,menus;try{store=await env.DB.prepare('SELECT * FROM stores WHERE id=1').first();({results:menus}=await menuQuery(env))}catch(e){console.error(e);return page}const closed=store.status==='closed',[title,note]=closed?COPIES.closed:COPIES.available,d=new Date(String(store.status_updated_at).replace(' ','T')+'Z'),time=isNaN(d)?'更新済み':new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',hour:'numeric',minute:'2-digit'}).format(d)+' 更新',grid=GROUPS.map(([c,label])=>{const list=menus.filter(x=>x.category===c);return list.length?`<h3 class="menu-group-title">${label}</h3>${list.map(menuCard).join('')}`:''}).join('')||'<p class="empty-menu">該当するメニューはありません。</p>';
+ const res=new Response(page.body,page);res.headers.delete('etag');res.headers.set('cache-control','no-store');
+ return new HTMLRewriter()
+  .on('body',{element:e=>e.setAttribute('data-status',closed?'closed':'available')})
+  .on('#headerStatus',{element:e=>e.setInnerContent(closed?title:'ただいま営業中')})
+  .on('#heroStatus',{element:e=>e.setInnerContent(title)})
+  .on('#heroStatusNote',{element:e=>e.setInnerContent(note)})
+  .on('#statusUpdated',{element:e=>e.setInnerContent(time)})
+  .on('.hero-lead',{element:e=>e.setInnerContent(store.description||'')})
+  .on('#shopAddress',{element:e=>e.setInnerContent(`〒${esc(store.postal_code)}<br>${esc(store.address)}`,{html:true})})
+  .on('#shopHours',{element:e=>e.setInnerContent(store.business_hours||'')})
+  .on('#shopHoliday',{element:e=>e.setInnerContent(store.regular_holiday||'')})
+  .on('#shopSeats',{element:e=>e.setInnerContent(store.seats||'')})
+  .on('#mapLink',{element:e=>e.setAttribute('href',store.map_url||'#')})
+  .on('#menuGrid',{element:e=>e.setInnerContent(grid,{html:true})})
+  .transform(res)}
+function menuCard(m){const price=`¥${Number(m.price).toLocaleString('ja-JP')}`;return m.category!=='ramen'?`<article class="menu-card topping-card${m.soldOut?' is-soldout':''}"><div class="menu-copy"><div><h3>${esc(m.name)}</h3><strong>${m.soldOut?'<em>売り切れ</em>':''}${price}</strong></div>${m.description?`<p>${esc(m.description)}</p>`:''}</div></article>`:`<article class="menu-card"><div class="menu-image"><img src="${esc(m.image)}" alt="${esc(m.name)}" loading="lazy">${m.soldOut?'<div class="sold-out">本日売り切れ</div>':''}</div><div class="menu-copy"><div><h3>${esc(m.name)}</h3><strong>${price}</strong></div><p>${esc(m.description)}</p></div></article>`}
+function esc(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 
 async function api(req,env,u){
  if(u.pathname==='/api/public/store'&&req.method==='GET')return publicData(env);
