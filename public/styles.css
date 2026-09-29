@@ -57,3 +57,4 @@ body,.site-header,.hero,.menu-section,.shop-section,footer{background:#fff}
 .menu-group-title{grid-column:1/-1;margin:24px 0 0;padding-top:24px;border-top:1px solid #d9d9d9;font:700 20px 'Noto Serif JP'}
 .menu-group-title:first-child{margin-top:0;padding-top:0;border-top:0}
 .photo-note{display:block;margin-top:6px;font-weight:400;color:var(--muted)}
+body[data-status="closed"] .pulse,body[data-status="closed"] .header-status span{background:#b8392b;box-shadow:0 0 0 5px #eed8d4}
